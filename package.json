@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@reduxjs/toolkit": "^1.8.0",
     "acorn": "^8.7.0",
     "acorn-import-assertions": "^1.8.0",
     "ajv": "^6.12.6",

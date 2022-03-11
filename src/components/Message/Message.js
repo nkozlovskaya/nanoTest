@@ -14,13 +14,13 @@ export const Message = ({ message }) => {
 
 export const BotMessage = ({ message }) => {
   return (
-    <div className="message-bot">
+    <div className="message bot">
       <img
         src={assistantAvatar}
         alt="assistantAvatar"
         className="message-img"
       />
-      <p>{message}</p>
+      <p className="p-bot">{message}</p>
     </div>
   );
 };

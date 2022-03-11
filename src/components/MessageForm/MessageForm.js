@@ -8,9 +8,9 @@ const MessageForm = () => {
   const dispatch = useDispatch();
   const [newMessage, setNewMessage] = useState("");
 
-  const sendNewMessage = (message) => {
+  function sendNewMessage(message) {
     dispatch(chatRequest(message));
-  };
+  }
 
   return (
     <div className="form">
@@ -28,7 +28,7 @@ const MessageForm = () => {
         onChange={(e) => setNewMessage(e.target.value)}
       />
       <button
-        className="form-btn-img"
+        className="form-btn"
         onClick={() => {
           if (newMessage !== "") {
             sendNewMessage(newMessage);
@@ -37,7 +37,7 @@ const MessageForm = () => {
           return undefined;
         }}
       >
-        <FaPaperPlane />
+        <FaPaperPlane className="form-btn-img" />
       </button>
     </div>
   );

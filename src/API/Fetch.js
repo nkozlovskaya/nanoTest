@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const base = axios.create({
-  baseURL: `https://biz.nanosemantics.ru/api/2.1/json/Chat.`,
+  baseURL: `https://biz.nanosemantics.ru/api/2.1/json/`,
 });
 
 const uuid =
@@ -10,13 +10,14 @@ const uuid =
 const cuid = localStorage.getItem("cuid") || "";
 
 export const chatAPI = {
-  async init() {
-    const response = await base.post(`init`, { uuid: uuid, cuid: cuid });
-    return response.data;
+  init() {
+    return base
+      .post("Chat.init", { uuid: uuid, cuid: cuid })
+      .then((response) => response.data);
   },
-  async request(text) {
-    return await base
-      .post(`request`, {
+  request(text) {
+    return base
+      .post("Chat.request", {
         cuid: localStorage.getItem("cuid"),
         text: text,
       })

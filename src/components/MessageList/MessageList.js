@@ -23,14 +23,17 @@ const MessageList = () => {
   return (
     <div className="container">
       <div>
-        <h1>Чат с виртуальным консультантом</h1>
+        <h2>Чат с виртуальным консультантом</h2>
       </div>
       <div className="list">
         {chat.map((chat) => {
           return chat.isBot ? (
-            <BotMessage message={chat.message} key={index} />
+            <BotMessage
+              message={chat.message}
+              key={new Date().getTime().toString()}
+            />
           ) : (
-            <Message message={chat.message} key={index} />
+            <Message message={chat.message} key={new Date().toString()} />
           );
         })}
 
@@ -38,7 +41,9 @@ const MessageList = () => {
       </div>
 
       <MessageForm />
-      <button onClick={resetChat}>Очистить</button>
+      <button className="btn-reset" onClick={resetChat}>
+        Очистить
+      </button>
     </div>
   );
 };

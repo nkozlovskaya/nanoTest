@@ -1,23 +1,32 @@
 .message {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
-  height: 20px;
-  border-radius: 10%;
-  color: black;
-  background: #7f09e0;
-  text-align: center;
-  align-self: flex-end;
-  padding: 5px 15px;
+  flex-direction: row-reverse;
+
   //   border: 1px solid;
   &-img {
     width: 30px;
     height: 30px;
-    margin-right: 10px;
+    margin: 0 5px;
   }
 }
 
-.message-bot {
-  background: #9c04aa;
+.bot {
+  flex-direction: row;
+  align-self: flex-end;
+}
+
+p {
+  height: 20px;
+  border-radius: 10%;
+  color: black;
+  background: rgb(163, 67, 241);
+  text-align: center;
+  align-self: flex-end;
+  padding: 5px 15px;
+}
+
+.p-bot {
+  background: rgb(188, 118, 206);
   color: black;
 }
