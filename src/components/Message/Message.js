@@ -3,15 +3,24 @@ import userAvatar from "../avatars/user.png";
 import assistantAvatar from "../avatars/assistant.png";
 import "./Message.less";
 
-const Message = ({ text, type }) => {
-  const avatar = type === "sent" ? userAvatar : assistantAvatar;
-
+export const Message = ({ message }) => {
   return (
-    <div className={`message ${type}`}>
-      <img src={avatar} alt="avatar" className="message-img" />
-      <p>{text}</p>
+    <div className="message">
+      <img src={userAvatar} alt="userAvatar" className="message-img" />
+      <p>{message}</p>
     </div>
   );
 };
 
-export default Message;
+export const BotMessage = ({ message }) => {
+  return (
+    <div className="message-bot">
+      <img
+        src={assistantAvatar}
+        alt="assistantAvatar"
+        className="message-img"
+      />
+      <p>{message}</p>
+    </div>
+  );
+};

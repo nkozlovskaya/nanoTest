@@ -1,23 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./MessageList.less";
 import MessageForm from "../MessageForm/MessageForm";
-import Message from "../Message/Message";
+import { Message, BotMessage } from "../Message/Message";
+import { ScrollDown } from "../Scroll/Scroll";
+import { chatInit, removeDialogAction } from "../../store/reduser";
 
-const MessageList = ({ messages, setMessages, setLastUserMsg }) => {
+const MessageList = () => {
+  const chat = useSelector((state) => state.chat.chat);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(chatInit());
+  }, []);
+
+  const resetChat = () => {
+    localStorage.setItem("history", "[]");
+    dispatch(removeDialogAction());
+  };
+
   return (
-    <div>
+    <div className="container">
+      <div>
+        <h1>Чат с виртуальным консультантом</h1>
+      </div>
       <div className="list">
-        {messages &&
-          messages.map((msg) => (
-            <Message key={msg.id} text={msg.text} type={msg.type} />
-          ))}
+        {chat.map((chat) => {
+          return chat.isBot ? (
+            <BotMessage message={chat.message} key={index} />
+          ) : (
+            <Message message={chat.message} key={index} />
+          );
+        })}
+
+        <ScrollDown />
       </div>
 
-      <MessageForm
-        messages={messages}
-        setMessages={setMessages}
-        setLastUserMsg={setLastUserMsg}
-      />
+      <MessageForm />
+      <button onClick={resetChat}>Очистить</button>
     </div>
   );
 };

@@ -1,34 +1,45 @@
 import React, { useState } from "react";
 import "./MessageForm.less";
-import SendButton from "../avatars/send.png";
+import { FaPaperPlane } from "react-icons/fa";
+import { chatRequest } from "../../store/reduser";
+import { useDispatch } from "react-redux";
 
-const MessageForm = ({ messages, setMessages, setLastUserMsg }) => {
-  const [textIinput, setTextInput] = useState("");
-  const changeTextInput = (e) => {
-    setTextInput(e.target.value);
-  };
+const MessageForm = () => {
+  const dispatch = useDispatch();
+  const [newMessage, setNewMessage] = useState("");
 
-  const sendMessage = (e) => {
-    e.preventDefault();
-    const newMsg = { text: textIinput, type: "sent" };
-    setMessages([...messages, newMsg]);
-    setLastUserMsg(newMsg.text);
-    setInputValue("");
+  const sendNewMessage = (message) => {
+    dispatch(chatRequest(message));
   };
 
   return (
-    <form className="form" onSubmit={sendMessage}>
+    <div className="form">
       <input
         type="text"
         placeholder="Введите сообщение..."
         className="form-input"
-        value={textIinput}
-        onChange={changeTextInput}
+        value={newMessage}
+        onKeyPress={(e) => {
+          if (e.key === "Enter" && newMessage !== "") {
+            sendNewMessage(newMessage);
+            setNewMessage("");
+          }
+        }}
+        onChange={(e) => setNewMessage(e.target.value)}
       />
-      <button type="submit" className="form-btn">
-        <img src={SendButton} alt="Send" className="form-btn-img" />
+      <button
+        className="form-btn-img"
+        onClick={() => {
+          if (newMessage !== "") {
+            sendNewMessage(newMessage);
+            setNewMessage("");
+          }
+          return undefined;
+        }}
+      >
+        <FaPaperPlane />
       </button>
-    </form>
+    </div>
   );
 };
 
