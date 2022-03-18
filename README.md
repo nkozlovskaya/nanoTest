@@ -1,5 +1,7 @@
 # nanoTest
 
+[Demo]( https://nkozlovskaya.github.io/nanoTest)ß
+
 Реализован простейший интерфейс для работы с чат-ботом, который включает в себя:
 1. строку ввода сообщения;
 2. кнопку отправки сообщения;
@@ -11,4 +13,4 @@
 
 Тестовый чат - InfoServer Chat API наносемантика
 
-[Demo]( https://nkozlovskaya.github.io/nanoTest/)
+
