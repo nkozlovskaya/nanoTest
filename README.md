@@ -1,6 +1,6 @@
 # nanoTest
 
-[Demo]( https://nkozlovskaya.github.io/nanoTest)
+[Demo]( https://nkozlovskaya.github.io/nanoTest/)
 
 Реализован простейший интерфейс для работы с чат-ботом, который включает в себя:
 1. строку ввода сообщения;
