@@ -6,7 +6,7 @@ module.exports = {
   mode: "development",
   entry: ["@babel/polyfill", "./src/index.js"],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].[hash].js",
   },
   devServer: {
@@ -14,7 +14,7 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js"],
   },
   plugins: [
     new HTMLWebpackPlugin({ template: "./src/index.html" }),

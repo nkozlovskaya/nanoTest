@@ -4,7 +4,7 @@ import "./MessageList.less";
 import MessageForm from "../MessageForm/MessageForm";
 import { Message, BotMessage } from "../Message/Message";
 import { ScrollDown } from "../Scroll/Scroll";
-import { chatInit, removeDialogAction } from "../../store/reduser";
+import { chatInit } from "../../store/reduser";
 
 const MessageList = () => {
   const chat = useSelector((state) => state.chat.chat);
@@ -15,15 +15,10 @@ const MessageList = () => {
     dispatch(chatInit());
   }, []);
 
-  const resetChat = () => {
-    localStorage.setItem("history", "[]");
-    dispatch(removeDialogAction());
-  };
-
   return (
     <div className="container">
       <div>
-        <h2>Чат с виртуальным консультантом</h2>
+        <h1>Чат с виртуальным консультантом</h1>
       </div>
       <div className="list">
         {chat.map((chat) => {
@@ -41,9 +36,6 @@ const MessageList = () => {
       </div>
 
       <MessageForm />
-      <button className="btn-reset" onClick={resetChat}>
-        Очистить
-      </button>
     </div>
   );
 };
